@@ -107,7 +107,7 @@ void oblique3(int  map[16][16], int a, int& sum)
 
 void oblique2(int  map[16][16], int a, int& sum)
 {
-	for (int i = 2; i <= 11; i++)								//判断上半部分的\方向
+	for (int i = 2; i <= 11; i++)								//鍒ゆ柇涓婂崐閮ㄥ垎鐨刓鏂瑰悜
 	{
 		int k = 0;
 		int j = 0;
@@ -144,7 +144,7 @@ void oblique2(int  map[16][16], int a, int& sum)
 
 void oblique1(int  map[16][16], int a, int& sum)
 {
-	for (int i = 1; i <= 11; i++)								// 判断下半部分的\方向
+	for (int i = 1; i <= 11; i++)								// 鍒ゆ柇涓嬪崐閮ㄥ垎鐨刓鏂瑰悜
 	{
 		int k = 0;
 		int j = 0;
@@ -181,7 +181,7 @@ void oblique1(int  map[16][16], int a, int& sum)
 
 void rowscore(int  map[16][16], int a, int& sum)
 {
-	for (int i = 1; i < 15; i++)								// 判断纵行
+	for (int i = 1; i < 15; i++)								// 鍒ゆ柇绾佃
 	{
 		int k = 0;
 		for (int j = 1; j <= 15; j++)
@@ -216,7 +216,7 @@ void rowscore(int  map[16][16], int a, int& sum)
 
 void linescore(int  map[16][16], int a, int& sum)
 {
-	for (int i = 1; i < 15; i++)								// 判断横行
+	for (int i = 1; i < 15; i++)								// 鍒ゆ柇妯
 	{
 		int k = 0;
 		for (int j = 1; j <= 15; j++)
@@ -251,7 +251,7 @@ void linescore(int  map[16][16], int a, int& sum)
 
 void Liveone(int  map[16][16], int a, int& sum)
 {
-	for (int i = 1; i <= 15; i++)								// 判断活一
+	for (int i = 1; i <= 15; i++)								// 鍒ゆ柇娲讳竴
 	{
 		for (int j = 1; j <= 15; j++)
 		{
@@ -305,25 +305,24 @@ int maxmin(int map[16][16], int deep, int Alpha, int Beta)
 						//printf("win!");
 						computerx = i;
 						computery = j;
-							return score(2, temp, 2);
-						}
-						val = maxmin(temp, deep - 1, Alpha, Beta);
-						if (val > Alpha)
-						{
-							if (deep == DEPTH)
-							{
-								computerx = i;
-								computery = j;
-							}
-							//printf("\ndeep: %d %d %d %d\n", deep, i, j, val);
-							Alpha = val;
-						}
-						if (Alpha > Beta)
-							return Alpha;
+						return score(2, temp, 2);
 					}
+					val = maxmin(temp, deep - 1, Alpha, Beta);
+					if (val > Alpha)
+					{
+						if (deep == DEPTH)
+						{
+							computerx = i;
+							computery = j;
+						}
+						//printf("\ndeep: %d %d %d %d\n", deep, i, j, val);
+						Alpha = val;
+					}
+					if (Alpha > Beta)
+						return Alpha;
 				}
 			}
-		//}
+		}
 		return Alpha;
 	}
 	else
